@@ -3,10 +3,12 @@
 # author: Rand01ph
 
 import time
+import json
+from _redis2 import RedisQueue
 
-from _redis import rc
+rq = RedisQueue("nsfocus:qqq")
 
 while True:
-    result = rc.blpop("nsfocus:qqq", 0)
+    result = rq.get(True)
     print result
     time.sleep(1)
